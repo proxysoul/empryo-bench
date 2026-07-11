@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "label": "final-v1-luna",
+  "when": "2026-08-15T16:55:13.099Z",
+  "model": "openai/gpt-5.6-luna",
+  "effort": "high",
+  "repeats": 1,
+  "agents": [
+    "empryo"
+  ],
+  "tasks": [
+    {
+      "id": "hono-client-cookies",
+      "difficulty": "easy",
+      "title": "RPC client mangles multiple cookies",
+      "repo": "honojs/hono"
+    },
+    {
+      "id": "hono-trie-multipart-param",
+      "difficulty": "hard",
+      "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+      "repo": "honojs/hono"
+    },
+    {
+      "id": "opencode-grep-symlink-path",
+      "difficulty": "easy",
+      "title": "grep resolves a symlinked search root to its real path",
+      "repo": "sst/opencode"
+    },
+    {
+      "id": "opencode-message-boundaries",
+      "difficulty": "hard",
+      "title": "revert and fork select messages by ID comparison instead of position",
+      "repo": "sst/opencode"
+    }
+  ],
+  "runs": [
+    {
+      "agent": "empryo",
+      "task": "hono-client-cookies",
+      "rep": 1,
+      "model": "openai/gpt-5.6-luna",
+      "effort": "high",
+      "startedAt": "2026-08-15T16:55:18.815Z",
+      "pass": false,
+      "reason": "acceptance: ules/vitest/node_modules/vite/dist/node/chunks/node.js:3410:26\n ❯ EnvironmentPluginContainer.transform node_modules/vitest/node_modules/vite/dist/node/chunks/node.js:30271:51\n ❯ loadAndTransform node_modules/vitest/node_modules/vite/dist/node/chunks/node.js:24532:26\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+      "durationMs": 31291,
+      "reportedCost": 0.027992780000000002,
+      "reportedTokens": {
+        "input": 226894,
+        "output": 1128,
+        "cacheRead": 130764,
+        "cacheWrite": 95958
+      },
+      "realCost": null,
+      "realTokens": null,
+      "realRequests": 0,
+      "steps": 4,
+      "toolCalls": 10,
+      "toolsUsed": [
+        "skills",
+        "grep",
+        "find",
+        "list_dir",
+        "grep",
+        "find",
+        "read",
+        "grep",
+        "grep",
+        "ast_edit"
+      ],
+      "filesEdited": [
+        "src/client/client.ts"
+      ],
+      "output": "",
+      "diff": "diff --git a/.gitignore b/.gitignore\nindex 087d731..b5c2a7b 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -138,3 +138,4 @@ out\n # Claude Code local files\n CLAUDE.local.md\n settings.local.json\n+.empryo\ndiff --git a/src/client/client.ts b/src/client/client.ts\nindex a2a996d..85f06b5 100644\n--- a/src/client/client.ts\n+++ b/src/client/client.ts\n@@ -96,6 +96,12 @@ class ClientRequestImpl {\n     }\n \n     if (args?.cookie) {\n+        const cookies: string[] = []\n+        for (const [key, value] of Object.entries(args.cookie)) {\n+          cookies.push(serialize(key, value))\n+        }\n+        headerValues['Cookie'] = cookies.join('; ')\n+      }\n       const cookies: string[] = []\n       for (const [key, value] of Object.entries(args.cookie)) {\n         cookies.push(serialize(key, value, { path: '/' }))",
+      "quality": null,
+      "error": "{\"type\":\"error\",\"sequence_number\":2,\"error\":{\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\",\"message\":\"Rate limit reached for gpt-5.6-luna in organization org-REDACTED on tokens per min (TPM): Limit 200000, Used 139602, Requested 97167. Please try again in 11.03s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\"param\":null}}"
+    },
+    {
+      "agent": "empryo",
+      "task": "hono-trie-multipart-param",
+      "rep": 1,
+      "model": "openai/gpt-5.6-luna",
+      "effort": "high",
+      "startedAt": "2026-08-15T16:56:10.647Z",
+      "pass": true,
+      "durationMs": 111618,
+      "reportedCost": 0.0299965,
+      "reportedTokens": {
+        "input": 452440,
+        "output": 6442,
+        "cacheRead": 394880,
+        "cacheWrite": 57130
+      },
+      "realCost": null,
+      "realTokens": null,
+      "realRequests": 0,
+      "steps": 10,
+      "toolCalls": 24,
+      "toolsUsed": [
+        "find",
+        "grep",
+        "memory",
+        "read",
+        "grep",
+        "read",
+        "read",
+        "read",
+        "grep",
+        "read",
+        "shell",
+        "grep",
+        "shell",
+        "shell",
+        "read",
+        "shell",
+        "shell",
+        "grep",
+        "ast_edit",
+        "shell",
+        "project",
+        "shell",
+        "shell",
+        "git"
+      ],
+      "filesEdited": [
+        "src/router/trie-router/node.ts"
+      ],
+      "output": "",
+      "diff": "diff --git a/.gitignore b/.gitignore\nindex 087d731..b5c2a7b 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -138,3 +138,4 @@ out\n # Claude Code local files\n CLAUDE.local.md\n settings.local.json\n+.empryo\ndiff --git a/src/router/trie-router/node.ts b/src/router/trie-router/node.ts\nindex 1698996..9737367 100644\n--- a/src/router/trie-router/node.ts\n+++ b/src/router/trie-router/node.ts\n@@ -200,7 +200,7 @@ export class Node<T> {\n \n               if (hasChildren(child.#children)) {\n                 child.#params = params\n-                const componentCount = m[0].match(/\\//)?.length ?? 0\n+                const componentCount = m[0].match(/\\//g)?.length ?? 0\n                 const targetCurNodes = (curNodesQueue[componentCount] ||= [])\n                 targetCurNodes.push(child)\n               }",
+      "quality": null,
+      "error": "{\"type\":\"error\",\"sequence_number\":2,\"error\":{\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\",\"message\":\"Rate limit reached for gpt-5.6-luna in organization org-REDACTED on tokens per min (TPM): Limit 200000, Used 158309, Requested 58967. Please try again in 5.182s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\"param\":null}}"
+    },
+    {
+      "agent": "empryo",
+      "task": "opencode-grep-symlink-path",
+      "rep": 1,
+      "model": "openai/gpt-5.6-luna",
+      "effort": "high",
+      "startedAt": "2026-08-15T16:58:44.543Z",
+      "pass": true,
+      "durationMs": 50474,
+      "reportedCost": 0.0246466,
+      "reportedTokens": {
+        "input": 303021,
+        "output": 1519,
+        "cacheRead": 230090,
+        "cacheWrite": 72716
+      },
+      "realCost": null,
+      "realTokens": null,
+      "realRequests": 0,
+      "steps": 5,
+      "toolCalls": 9,
+      "toolsUsed": [
+        "grep",
+        "find",
+        "find",
+        "read",
+        "read",
+        "read",
+        "ast_edit",
+        "ast_edit",
+        "ast_edit"
+      ],
+      "filesEdited": [
+        "packages/opencode/src/tool/grep.ts"
+      ],
+      "output": "",
+      "diff": "diff --git a/.gitignore b/.gitignore\nindex 006cab8..227cb17 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -32,3 +32,4 @@ UPCOMING_CHANGELOG.md\n logs/\n *.bun-build\n tsconfig.tsbuildinfo\n+.empryo\ndiff --git a/packages/opencode/src/tool/grep.ts b/packages/opencode/src/tool/grep.ts\nindex e44b8e8..623d309 100644\n--- a/packages/opencode/src/tool/grep.ts\n+++ b/packages/opencode/src/tool/grep.ts\n@@ -57,7 +57,7 @@ export const GrepTool = Tool.define(\n             kind: requestedInfo?.type === \"Directory\" ? \"directory\" : \"file\",\n           })\n \n-          const search = FSUtil.resolve(requested)\n+          const search = requested\n           const info = yield* fs.stat(search).pipe(Effect.catch(() => Effect.succeed(undefined)))\n           const cwd = info?.type === \"Directory\" ? search : path.dirname(search)\n           const result = yield* ripgrep.grep({",
+      "quality": null,
+      "error": "{\"type\":\"error\",\"sequence_number\":2,\"error\":{\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\",\"message\":\"Rate limit reached for gpt-5.6-luna in organization org-REDACTED on tokens per min (TPM): Limit 200000, Used 155507, Requested 73750. Please try again in 8.777s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\"param\":null}}"
+    },
+    {
+      "agent": "empryo",
+      "task": "opencode-message-boundaries",
+      "rep": 1,
+      "model": "openai/gpt-5.6-luna",
+      "effort": "high",
+      "startedAt": "2026-08-15T17:01:52.860Z",
+      "pass": false,
+      "reason": "acceptance: nal-v1-luna-opencode-message-boundaries-empryo-r1/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Scheduler.js:140:10)\n(fail) Session > forks the chronological prefix across mixed message ID ordering [13.27ms]\n\n 14 pass\n 2 fail\n 77 expect() calls\nRan 16 tests across 2 files. [6.87s]\n",
+      "durationMs": 36322,
+      "reportedCost": 0.02762372,
+      "reportedTokens": {
+        "input": 262850,
+        "output": 1472,
+        "cacheRead": 173246,
+        "cacheWrite": 89432
+      },
+      "realCost": null,
+      "realTokens": null,
+      "realRequests": 0,
+      "steps": 4,
+      "toolCalls": 14,
+      "toolsUsed": [
+        "grep",
+        "find",
+        "find",
+        "read",
+        "read",
+        "grep",
+        "grep",
+        "read",
+        "grep",
+        "read",
+        "read",
+        "grep",
+        "read",
+        "grep"
+      ],
+      "filesEdited": [],
+      "output": "",
+      "diff": "diff --git a/.gitignore b/.gitignore\nindex 006cab8..227cb17 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -32,3 +32,4 @@ UPCOMING_CHANGELOG.md\n logs/\n *.bun-build\n tsconfig.tsbuildinfo\n+.empryo",
+      "quality": null,
+      "error": "{\"type\":\"error\",\"sequence_number\":2,\"error\":{\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\",\"message\":\"Rate limit reached for gpt-5.6-luna in organization org-REDACTED on tokens per min (TPM): Limit 200000, Used 181050, Requested 99811. Please try again in 24.258s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\"param\":null}}"
+    }
+  ],
+  "env": {
+    "os": "darwin 25.6.0",
+    "arch": "arm64",
+    "bun": "1.3.14",
+    "agentVersions": {
+      "empryo": "empryo 3.5.10-beta"
+    },
+    "agentKeys": {
+      "empryo": "…RdMA/2b52dcf8"
+    },
+    "variant": {
+      "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v28",
+      "EMPRYO_PROJECT_CONFIG": "set"
+    }
+  }
+}

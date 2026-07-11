@@ -1,0 +1,8 @@
+node_modules/
+cache/
+sterile-home/
+logs/
+report/
+*.log
+.env.bench*
+!.env.bench.example

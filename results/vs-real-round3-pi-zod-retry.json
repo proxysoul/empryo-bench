@@ -1,0 +1,26 @@
+{
+  "label": "vs-real-round3-pi-zod-retry",
+  "when": "2026-07-16T00:24:06.302Z",
+  "tiers": [
+    "opus"
+  ],
+  "budgetStop": 12,
+  "spent": 2.423850499999999,
+  "rows": [
+    {
+      "task": "zod-preprocess-catch",
+      "agent": "pi",
+      "tier": "opus",
+      "model": "claude-opus-4-8",
+      "pass": true,
+      "tokensIn": 2855574,
+      "tokensOut": 24778,
+      "cacheRead": 2790046,
+      "cacheWrite": 65390,
+      "cost": 2.423850499999999,
+      "steps": 69,
+      "toolCalls": 68,
+      "durationMs": 427200
+    }
+  ]
+}

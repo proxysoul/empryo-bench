@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empryo vs pi — head-to-head on real bugs</title>
+<style>
+  :root {
+    --surface-1: #fcfcfb; --surface-2: #f4f4f2;
+    --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #8a887f;
+    --grid: #e7e6e2; --series-empryo: #2a78d6; --series-pi: #1baf7a;
+    --pass: #008300; --fail: #e34948;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-1: #1a1a19; --surface-2: #232322;
+      --text-primary: #ffffff; --text-secondary: #c3c2b7; --text-muted: #8a887f;
+      --grid: #33332f; --series-empryo: #3987e5; --series-pi: #199e70;
+      --pass: #58b658; --fail: #e66767;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--surface-1); color: var(--text-primary);
+    font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px 80px;
+  }
+  main { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 26px; letter-spacing: -0.02em; }
+  h2 { font-size: 17px; margin: 44px 0 14px; }
+  .sub { color: var(--text-secondary); margin-top: 6px; max-width: 640px; }
+  .meta { color: var(--text-muted); font-size: 12.5px; margin-top: 4px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 26px; }
+  .tile { background: var(--surface-2); border-radius: 10px; padding: 14px 16px; }
+  .tile .v { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .tile .l { color: var(--text-secondary); font-size: 12.5px; margin-top: 2px; }
+  .tile .d { font-size: 12px; margin-top: 2px; color: var(--text-muted); }
+  .legend { display: flex; gap: 18px; align-items: center; font-size: 13px; color: var(--text-secondary); margin: 10px 0 4px; }
+  .legend .k { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .chart { background: var(--surface-2); border-radius: 10px; padding: 14px 16px 10px; overflow-x: auto; }
+  .chart h3 { font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; }
+  .row-label { font-size: 12px; color: var(--text-secondary); }
+  svg text { font: 11.5px ui-sans-serif, system-ui, sans-serif; fill: var(--text-secondary); }
+  svg .val { fill: var(--text-primary); font-variant-numeric: tabular-nums; }
+  svg .fail-x { fill: var(--fail); font-weight: 700; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--text-secondary); font-weight: 600; font-size: 12px; }
+  td.num, th.num { text-align: right; }
+  .ok { color: var(--pass); font-weight: 700; } .no { color: var(--fail); font-weight: 700; }
+  .spot { background: var(--surface-2); border-radius: 10px; padding: 18px 20px; margin-top: 10px; }
+  .spot b.e { color: var(--series-empryo); } .spot b.p { color: var(--series-pi); }
+  .caveats { color: var(--text-secondary); font-size: 13px; max-width: 700px; }
+  .wrap { overflow-x: auto; }
+  #tip { position: fixed; pointer-events: none; background: var(--text-primary); color: var(--surface-1);
+         padding: 6px 9px; border-radius: 6px; font-size: 12px; opacity: 0; transition: opacity .08s; z-index: 10; }
+  .truth { background: var(--surface-2); border-radius: 10px; padding: 16px 18px; margin-top: 14px; }
+  .truth-head { font-size: 13px; font-weight: 600; }
+  .truth-head span { color: var(--text-muted); font-weight: 400; margin-left: 8px; font-size: 12px; }
+  .truth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 12px; }
+  .truth-cell { border: 1px solid var(--grid); border-radius: 8px; padding: 12px 14px; }
+  .truth-agent { font-size: 12px; color: var(--text-secondary); }
+  .truth-agent .k { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; }
+  .truth-nums { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .truth-verdict { margin-top: 8px; font-size: 12.5px; font-weight: 700; }
+  .ok-v { color: var(--pass); } .no-v { color: var(--fail); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Empryo vs pi — same bugs, same models, real repo</h1>
+  <p class="sub">Three committed bugs in a realistic TypeScript webhook project, reported the way a human reports symptoms — no file names, no hints. Hidden acceptance tests grade the fixes; the repo's own tests must stay green. Separate API keys per agent.</p>
+  <p class="meta">2026-07-11 · claude haiku 4.5 / sonnet 4.6 / opus 4.8 · single trial per cell · total experiment spend $2.56</p>
+
+  <div class="tiles">
+    <div class="tile"><div class="v">8/9 vs 7/9</div><div class="l">tasks fixed</div><div class="d">Empryo vs pi</div></div>
+    <div class="tile"><div class="v">5.7× fewer</div><div class="l">input tokens · console-verified</div><div class="d">1.09M vs 6.21M billed</div></div>
+    <div class="tile"><div class="v">6.3× fewer</div><div class="l">output tokens · console-verified</div><div class="d">14.4k vs 91.2k billed</div></div>
+    <div class="tile"><div class="v">−28%</div><div class="l">billed cost · console-verified</div><div class="d">$1.13 vs $1.58</div></div>
+    <div class="tile"><div class="v">−57%</div><div class="l">wall clock</div><div class="d">4m 16s vs 10m 0s</div></div>
+  </div>
+  <div class="truth">
+    <div class="truth-head">Self-accounting vs the actual Anthropic bill <span>separate API key per agent · Console ground truth</span></div>
+    <div class="truth-grid">
+      <div class="truth-cell">
+        <div class="truth-agent"><span class="k" style="background:var(--series-empryo)"></span>Empryo said</div>
+        <div class="truth-nums">1,089,262 in · $1.13</div>
+        <div class="truth-agent" style="margin-top:6px">Anthropic billed</div>
+        <div class="truth-nums">1,089,262 in · $1.13</div>
+        <div class="truth-verdict ok-v">✓ exact — to the token and the cent</div>
+      </div>
+      <div class="truth-cell">
+        <div class="truth-agent"><span class="k" style="background:var(--series-pi)"></span>pi said</div>
+        <div class="truth-nums">1,704,000 in · $1.42</div>
+        <div class="truth-agent" style="margin-top:6px">Anthropic billed</div>
+        <div class="truth-nums">6,209,183 in · $1.58</div>
+        <div class="truth-verdict no-v">✗ under-reported 73% of its input tokens</div>
+      </div>
+    </div>
+  </div>
+  <p class="meta" style="margin-top:10px">Per-task charts below use each agent’s self-reported figures (per-cell attribution); pi’s real per-task costs are proportionally higher than shown.</p>
+
+  <h2>Cost per task</h2>
+  <div class="legend">
+    <span><span class="k" style="background:var(--series-empryo)"></span>Empryo</span>
+    <span><span class="k" style="background:var(--series-pi)"></span>pi</span>
+    <span style="margin-left:auto">✗ = fix rejected by hidden acceptance tests</span>
+  </div>
+  <div class="charts" id="cost-charts"></div>
+
+  <h2>Wall-clock per task</h2>
+  <div class="charts" id="time-charts"></div>
+
+  <h2>The row that tells the story</h2>
+  <div class="spot">
+    <p>The <b>sort-order</b> bug carries a trap: a stale comment says event ids are ULIDs (“id order is arrival order”), but the id generator quietly went random two versions ago. Text search finds the comment and believes it.</p>
+    <p style="margin-top:10px">On haiku, <b class="p">pi</b> grepped, read, trusted the comment, and shipped a wrong fix after <b>35 steps, $0.183, 2m 45s</b>. <b class="e">Empryo</b>’s genome injects what the code actually does — symbols, calls, real relationships — and haiku landed the correct fix in <b>10 steps, $0.039, 20s</b>. Comments lie. Graphs don’t.</p>
+  </div>
+
+  <h2>Full results</h2>
+  <div class="wrap"><table id="results"></table></div>
+
+  <h2>Caveats</h2>
+  <p class="caveats">Single trial per cell — agent runs are stochastic, so treat small per-cell deltas as noise (the aggregate direction is consistent across all nine cells). Costs are each agent’s self-reported accounting; token counts are recorded raw. pi could not run opus 4.8 out of the box (model registry tops out at 4-7; its default thinking config is rejected by the 4.8 API) — its opus tier ran with a custom model id and thinking off, the only working configuration, and the failed launches are excluded from pi’s totals. Both agents failed csv-quoting on opus with non-RFC escaping that haiku and sonnet got right. Empryo runs include a 1–2s no-LLM genome pre-warm. Reproduce: <code>bun bench/vs/run-vs.ts</code>.</p>
+</main>
+<div id="tip"></div>
+<script>
+const DATA = [
+  { tier: "haiku 4.5", task: "profile-race", e: { pass: 1, cost: 0.041, s: 22, steps: 8, tok: "120k" },  p: { pass: 1, cost: 0.053, s: 42, steps: 14, tok: "165k" } },
+  { tier: "haiku 4.5", task: "csv-quoting",  e: { pass: 1, cost: 0.031, s: 14, steps: 7, tok: "91k" },  p: { pass: 1, cost: 0.043, s: 31, steps: 9, tok: "99k" } },
+  { tier: "haiku 4.5", task: "sort-order",   e: { pass: 1, cost: 0.039, s: 20, steps: 10, tok: "141k" }, p: { pass: 0, cost: 0.183, s: 165, steps: 35, tok: "693k" } },
+  { tier: "sonnet 4.6", task: "profile-race", e: { pass: 1, cost: 0.110, s: 42, steps: 7, tok: "98k" }, p: { pass: 1, cost: 0.137, s: 63, steps: 10, tok: "123k" } },
+  { tier: "sonnet 4.6", task: "csv-quoting",  e: { pass: 1, cost: 0.101, s: 27, steps: 7, tok: "92k" }, p: { pass: 1, cost: 0.103, s: 50, steps: 7, tok: "72k" } },
+  { tier: "sonnet 4.6", task: "sort-order",   e: { pass: 1, cost: 0.077, s: 19, steps: 5, tok: "64k" }, p: { pass: 1, cost: 0.084, s: 32, steps: 7, tok: "71k" } },
+  { tier: "opus 4.8", task: "profile-race", e: { pass: 1, cost: 0.262, s: 43, steps: 9, tok: "166k" },  p: { pass: 1, cost: 0.337, s: 68, steps: 13, tok: "213k" } },
+  { tier: "opus 4.8", task: "csv-quoting",  e: { pass: 0, cost: 0.158, s: 17, steps: 5, tok: "79k" },  p: { pass: 0, cost: 0.236, s: 99, steps: 10, tok: "137k" } },
+  { tier: "opus 4.8", task: "sort-order",   e: { pass: 1, cost: 0.315, s: 52, steps: 13, tok: "239k" }, p: { pass: 1, cost: 0.244, s: 49, steps: 9, tok: "128k" } },
+];
+const tiers = [...new Set(DATA.map((d) => d.tier))];
+const tip = document.getElementById("tip");
+const fmt$ = (v) => "$" + v.toFixed(3);
+const fmtS = (v) => (v >= 100 ? Math.round(v) + "s" : v + "s");
+
+function barChart(containerId, metric, fmt) {
+  const root = document.getElementById(containerId);
+  for (const tier of tiers) {
+    const rows = DATA.filter((d) => d.tier === tier);
+    const max = Math.max(...rows.flatMap((r) => [r.e[metric], r.p[metric]]));
+    const W = 250, LABEL = 88, BARMAX = W - LABEL - 52, RH = 40, PAD = 4;
+    const H = rows.length * RH + 6;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${metric} for ${tier}">`;
+    rows.forEach((r, i) => {
+      const y = i * RH + 4;
+      svg += `<text x="0" y="${y + 15}" class="row-label">${r.task}</text>`;
+      [["e", "Empryo", "var(--series-empryo)"], ["p", "pi", "var(--series-pi)"]].forEach(([k, name, color], j) => {
+        const v = r[k][metric], pass = r[k].pass;
+        const w = Math.max(2, (v / max) * BARMAX);
+        const by = y + 4 + j * 14;
+        svg += `<rect x="${LABEL}" y="${by}" width="${w}" height="10" rx="4" fill="${color}"
+                 data-tip="${name} · ${r.task} · ${fmt(v)} · ${r[k].steps} steps${pass ? "" : " · FAILED"}"></rect>`;
+        svg += `<text x="${LABEL + w + 6}" y="${by + 9}" class="val">${fmt(v)}${pass ? "" : " "}</text>`;
+        if (!pass) svg += `<text x="${LABEL + w + 6 + fmt(v).length * 6.4 + 4}" y="${by + 9}" class="fail-x">✗</text>`;
+      });
+    });
+    svg += "</svg>";
+    const div = document.createElement("div");
+    div.className = "chart";
+    div.innerHTML = `<h3>${tier}</h3>${svg}`;
+    root.appendChild(div);
+  }
+}
+barChart("cost-charts", "cost", fmt$);
+barChart("time-charts", "s", fmtS);
+
+document.addEventListener("mousemove", (ev) => {
+  const t = ev.target.closest?.("[data-tip]");
+  if (t) {
+    tip.textContent = t.getAttribute("data-tip");
+    tip.style.opacity = "1";
+    tip.style.left = Math.min(window.innerWidth - 220, ev.clientX + 12) + "px";
+    tip.style.top = ev.clientY + 14 + "px";
+  } else tip.style.opacity = "0";
+});
+
+const tbl = document.getElementById("results");
+tbl.innerHTML =
+  "<tr><th>tier</th><th>task</th><th>agent</th><th>fixed</th><th class=num>cost</th><th class=num>steps</th><th class=num>input tok</th><th class=num>time</th></tr>" +
+  DATA.flatMap((r) => [["Empryo", r.e], ["pi", r.p]].map(([name, a]) =>
+    `<tr><td>${r.tier}</td><td>${r.task}</td><td>${name}</td>` +
+    `<td class="${a.pass ? "ok" : "no"}">${a.pass ? "✓" : "✗"}</td>` +
+    `<td class=num>${fmt$(a.cost)}</td><td class=num>${a.steps}</td>` +
+    `<td class=num>${a.tok ?? "—"}</td><td class=num>${fmtS(a.s)}</td></tr>`)).join("");
+</script>
+</body>
+</html>

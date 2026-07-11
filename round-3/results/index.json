@@ -1,0 +1,1030 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-16T01:36:23.546Z",
+  "benchmarks": [
+    {
+      "file": "final-v2-sonnet.json",
+      "label": "final-v2-sonnet",
+      "when": "2026-08-16T01:09:04.995Z",
+      "model": "claude-sonnet-5",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…qQAA/8694d40e"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v40",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 8,
+          "total": 8,
+          "passRate": 1,
+          "medDuration": 125408.5,
+          "medDurationSolved": 125408.5,
+          "medReported": 0.33665425,
+          "medReal": 0.33694275000000007,
+          "medQuality": null,
+          "medTokensOut": 8196.5,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-v2-luna.json",
+      "label": "final-v2-luna",
+      "when": "2026-08-15T22:36:33.723Z",
+      "model": "openai/gpt-5.6-luna",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v35",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 8,
+          "total": 8,
+          "passRate": 1,
+          "medDuration": 103371,
+          "medDurationSolved": 103371,
+          "medReported": 0.024668345,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 4564.5,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-pi-sol.json",
+      "label": "final-pi-sol",
+      "when": "2026-08-15T22:27:54.013Z",
+      "model": "openai/gpt-5.6-sol",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.2"
+        },
+        "agentKeys": {
+          "pi": "…RdMA/2b52dcf8"
+        },
+        "variant": {}
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 67946.5,
+          "medDurationSolved": 67946.5,
+          "medReported": 0.420541375,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 2404.5,
+          "score": 100
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-pi-terra.json",
+      "label": "final-pi-terra",
+      "when": "2026-08-15T22:23:09.340Z",
+      "model": "openai/gpt-5.6-terra",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.2"
+        },
+        "agentKeys": {
+          "pi": "…RdMA/2b52dcf8"
+        },
+        "variant": {}
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 38703.5,
+          "medDurationSolved": 38703.5,
+          "medReported": 0.11989285,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 1676.5,
+          "score": 100
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-pi-luna.json",
+      "label": "final-pi-luna",
+      "when": "2026-08-15T21:41:54.080Z",
+      "model": "openai/gpt-5.6-luna",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.2"
+        },
+        "agentKeys": {
+          "pi": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v32"
+        }
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 7,
+          "total": 8,
+          "passRate": 0.875,
+          "medDuration": 113532,
+          "medDurationSolved": 117454,
+          "medReported": 0.001415355,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 300.5,
+          "score": 87.5
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-v2-haiku.json",
+      "label": "final-v2-haiku",
+      "when": "2026-08-15T20:53:11.911Z",
+      "model": "claude-haiku-4-5",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo-marionette": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo-marionette": "…qQAA/8694d40e"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v31",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo-marionette",
+          "passes": 7,
+          "total": 8,
+          "passRate": 0.875,
+          "medDuration": 256674.5,
+          "medDurationSolved": 290061,
+          "medReported": 0.4101017,
+          "medReal": 0.4105257,
+          "medQuality": null,
+          "medTokensOut": 11153,
+          "score": 87.5
+        }
+      ],
+      "winner": "empryo-marionette"
+    },
+    {
+      "file": "final-v2-terra.json",
+      "label": "final-v2-terra",
+      "when": "2026-08-15T19:16:17.771Z",
+      "model": "openai/gpt-5.6-terra",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v31",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 8,
+          "total": 8,
+          "passRate": 1,
+          "medDuration": 65073.5,
+          "medDurationSolved": 65073.5,
+          "medReported": 0.15993065,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 2719,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-v2-sol.json",
+      "label": "final-v2-sol",
+      "when": "2026-08-15T17:58:55.059Z",
+      "model": "openai/gpt-5.6-sol",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v35",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 8,
+          "total": 8,
+          "passRate": 1,
+          "medDuration": 109334,
+          "medDurationSolved": 109334,
+          "medReported": 0.5409341249999999,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 3433.5,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-pi-sonnet.json",
+      "label": "final-pi-sonnet",
+      "when": "2026-08-15T17:49:55.505Z",
+      "model": "claude-sonnet-5",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.2"
+        },
+        "agentKeys": {
+          "pi": "…qQAA/8694d40e"
+        },
+        "variant": {}
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 8,
+          "total": 8,
+          "passRate": 1,
+          "medDuration": 77510.5,
+          "medDurationSolved": 77510.5,
+          "medReported": 0.2257111,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 5604.5,
+          "score": 100
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-v1-luna.json",
+      "label": "final-v1-luna",
+      "when": "2026-08-15T16:55:13.099Z",
+      "model": "openai/gpt-5.6-luna",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v28",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 2,
+          "total": 4,
+          "passRate": 0.5,
+          "medDuration": 43398,
+          "medDurationSolved": 81046,
+          "medReported": 0.02780825,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 1495.5,
+          "score": 50
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-pi-haiku.json",
+      "label": "final-pi-haiku",
+      "when": "2026-08-15T15:04:34.287Z",
+      "model": "claude-haiku-4-5",
+      "repeats": 2,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.1"
+        },
+        "agentKeys": {
+          "pi": "…qQAA/8694d40e"
+        },
+        "variant": {}
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 7,
+          "total": 8,
+          "passRate": 0.875,
+          "medDuration": 205665,
+          "medDurationSolved": 135865,
+          "medReported": 0.19463545000000002,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 11214.5,
+          "score": 87.5
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-v2-opus.json",
+      "label": "final-v2-opus",
+      "when": "2026-08-15T14:16:33.431Z",
+      "model": "claude-opus-5",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…qQAA/8694d40e"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/dev/empryo/apps/cli/bin/empryo-v23",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 82956.5,
+          "medDurationSolved": 82956.5,
+          "medReported": 0.517081,
+          "medReal": 0.521185875,
+          "medQuality": null,
+          "medTokensOut": 4508,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-v1-terra.json",
+      "label": "final-v1-terra",
+      "when": "2026-08-15T13:03:38.069Z",
+      "model": "openai/gpt-5.6-terra",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…RdMA/2b52dcf8"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/.empryo/bin/empryo-v21",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 86935.5,
+          "medDurationSolved": 86935.5,
+          "medReported": 0.34892055,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 4364,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-pi-opus.json",
+      "label": "final-pi-opus",
+      "when": "2026-08-15T12:47:23.236Z",
+      "model": "claude-opus-5",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "pi": "0.84.1"
+        },
+        "agentKeys": {
+          "pi": "…qQAA/8694d40e"
+        },
+        "variant": {}
+      },
+      "agents": [
+        {
+          "agent": "pi",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 164505,
+          "medDurationSolved": 164505,
+          "medReported": 0.821682875,
+          "medReal": null,
+          "medQuality": null,
+          "medTokensOut": 8614.5,
+          "score": 100
+        }
+      ],
+      "winner": "pi"
+    },
+    {
+      "file": "final-v1-opus.json",
+      "label": "final-v1-opus",
+      "when": "2026-08-15T12:21:03.449Z",
+      "model": "claude-opus-5",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…qQAA/8694d40e"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/.empryo/bin/empryo-v21",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 4,
+          "total": 4,
+          "passRate": 1,
+          "medDuration": 101518.5,
+          "medDurationSolved": 101518.5,
+          "medReported": 1.1734896250000002,
+          "medReal": 1.1768021249999996,
+          "medQuality": null,
+          "medTokensOut": 5892,
+          "score": 100
+        }
+      ],
+      "winner": "empryo"
+    },
+    {
+      "file": "final-v1-haiku.json",
+      "label": "final-v1-haiku",
+      "when": "2026-08-15T11:14:09.601Z",
+      "model": "claude-haiku-4-5",
+      "repeats": 1,
+      "demo": false,
+      "tasks": [
+        {
+          "id": "hono-client-cookies",
+          "difficulty": "easy",
+          "title": "RPC client mangles multiple cookies",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "hono-trie-multipart-param",
+          "difficulty": "hard",
+          "title": "TrieRouter breaks when a regexp param spans 3+ path parts",
+          "repo": "honojs/hono"
+        },
+        {
+          "id": "opencode-grep-symlink-path",
+          "difficulty": "easy",
+          "title": "grep resolves a symlinked search root to its real path",
+          "repo": "sst/opencode"
+        },
+        {
+          "id": "opencode-message-boundaries",
+          "difficulty": "hard",
+          "title": "revert and fork select messages by ID comparison instead of position",
+          "repo": "sst/opencode"
+        }
+      ],
+      "env": {
+        "os": "darwin 25.6.0",
+        "arch": "arm64",
+        "bun": "1.3.14",
+        "agentVersions": {
+          "empryo": "empryo 3.5.10-beta"
+        },
+        "agentKeys": {
+          "empryo": "…qQAA/8694d40e"
+        },
+        "variant": {
+          "EMPRYO_BIN": "~/.empryo/bin/empryo-v21",
+          "EMPRYO_PROJECT_CONFIG": "set"
+        }
+      },
+      "agents": [
+        {
+          "agent": "empryo",
+          "passes": 3,
+          "total": 4,
+          "passRate": 0.75,
+          "medDuration": 151952.5,
+          "medDurationSolved": 174882,
+          "medReported": 0.400489725,
+          "medReal": 0.40090372500000004,
+          "medQuality": null,
+          "medTokensOut": 11710,
+          "score": 75
+        }
+      ],
+      "winner": "empryo"
+    }
+  ]
+}

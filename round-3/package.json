@@ -1,0 +1,22 @@
+{
+  "name": "bench-soul",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Coding-agent harness benchmark: Empryo vs pi vs opencode vs Claude Code on real merged bugs, same model, median of 3.",
+  "scripts": {
+    "prep": "bun src/run.ts --prep-only",
+    "validate": "bun src/validate.ts",
+    "bench": "bun src/run.ts",
+    "judge": "bun src/judge.ts",
+    "report": "bun src/report.ts",
+    "proxy": "bun src/proxy.ts",
+    "manifest": "bun src/aggregate.ts",
+    "workspaces": "bun src/workspaces.ts",
+    "costcheck": "bun src/costcheck.ts",
+    "sample": "bun sample/make-sample.ts && bun src/report.ts sample/sample-results.json"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0"
+  }
+}

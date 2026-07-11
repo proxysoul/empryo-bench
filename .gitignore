@@ -1,0 +1,4 @@
+.empryo/
+node_modules/
+*.log
+.cache/

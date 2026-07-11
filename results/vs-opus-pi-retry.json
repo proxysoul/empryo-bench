@@ -1,0 +1,57 @@
+{
+  "label": "vs-opus-pi-retry",
+  "when": "2026-07-11T18:18:29.202Z",
+  "tiers": [
+    "opus"
+  ],
+  "budgetStop": 6,
+  "spent": 0.8163415,
+  "rows": [
+    {
+      "task": "profile-race",
+      "agent": "pi",
+      "tier": "opus",
+      "model": "claude-opus-4-8",
+      "pass": true,
+      "tokensIn": 213463,
+      "tokensOut": 4856,
+      "cacheRead": 194607,
+      "cacheWrite": 18830,
+      "cost": 0.336521,
+      "steps": 13,
+      "toolCalls": 16,
+      "durationMs": 68319
+    },
+    {
+      "task": "csv-quoting",
+      "agent": "pi",
+      "tier": "opus",
+      "model": "claude-opus-4-8",
+      "pass": false,
+      "reason": "acceptance: kboard-vs-opus-pi-retry-opus-csv-quoting-pi/tests-hidden/csv-quoting.test.ts:51:21)\n(fail) csv export (hidden) > descriptions with commas and quotes round-trip without column shift [0.49ms]\n\n 1 pass\n 1 fail\n 3 expect() calls\nRan 2 tests across 1 file. [9.00ms]",
+      "tokensIn": 136587,
+      "tokensOut": 3328,
+      "cacheRead": 121904,
+      "cacheWrite": 14663,
+      "cost": 0.23589575000000002,
+      "steps": 10,
+      "toolCalls": 9,
+      "durationMs": 99134
+    },
+    {
+      "task": "sort-order",
+      "agent": "pi",
+      "tier": "opus",
+      "model": "claude-opus-4-8",
+      "pass": true,
+      "tokensIn": 127746,
+      "tokensOut": 3606,
+      "cacheRead": 112107,
+      "cacheWrite": 15621,
+      "cost": 0.24392475,
+      "steps": 9,
+      "toolCalls": 11,
+      "durationMs": 49166
+    }
+  ]
+}
